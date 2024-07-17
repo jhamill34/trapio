@@ -1,16 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import './globals.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { App } from './App';
+import './globals.css';
+import { HomePage } from './pages/home-page';
+import { SettingsPage } from './pages/settings-page';
 
 const rootEl = document.getElementById('root');
 if (rootEl) {
   const root = ReactDOM.createRoot(rootEl);
   root.render(
     <React.StrictMode>
-      <App />
+      <BrowserRouter basename="/">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/settings" element={<SettingsPage />} />
+        </Routes>
+      </BrowserRouter>
     </React.StrictMode>,
   );
 }
