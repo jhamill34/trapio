@@ -1,45 +1,18 @@
-import { NavLink, Link, NavLinkProps } from 'react-router-dom';
-import {
-  Blocks,
-  CircleUser,
-  Home,
-  Menu,
-  Package2,
-  Workflow,
-} from 'lucide-react';
+import { NavLink, NavLinkProps } from 'react-router-dom';
+import { Blocks, Home, Menu, Workflow } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
-
-const LogoBlock: React.FC<{ mobile: boolean }> = ({ mobile }) => {
-  return (
-    <Link
-      to="/"
-      className={cn(
-        'flex items-center gap-2 text-lg font-semibold',
-        mobile && 'md:hidden',
-      )}
-    >
-      <Package2 className="h-6 w-6" />
-      <span className={cn('sr-only md:not-sr-only')}>Trapio</span>
-    </Link>
-  );
-};
+import { LogoBlock } from '@/components/ui/logo';
+import { Separator } from '@/components/ui/separator';
+import { UserMenu } from '@/components/ui/user-menu';
 
 const NavigationSidebar: React.FC = () => {
   return (
     <nav className="grid gap-2 md:gap-0 md:items-start text-lg md:text-sm md:px-2 lg:px-4 font-medium">
-      <LogoBlock mobile />
+      <LogoBlock mobileOnly />
       <NavigationLink to="/dashboard">
         <Home className="h-5 w-5 md:h-4 md:w-4" />
         Dashboard
@@ -68,7 +41,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
       <div className="hidden border-r bg-muted/40 md:block">
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-            <LogoBlock mobile={false} />
+            <LogoBlock mobileOnly={false} />
           </div>
           <div className="flex-1">
             <NavigationSidebar />
@@ -94,30 +67,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
           </Sheet>
           <div className="flex-1" />
           <ThemeToggle />
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="secondary" size="icon" className="rounded-full">
-                <CircleUser className="h-5 w-5" />
-                <span className="sr-only">Toggle user menu</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-
-              <DropdownMenuItem>
-                <Link to="/settings">Settings</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Link to="/support">Support</Link>
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-
-              <DropdownMenuItem>
-                <Link to="/logout">Logout</Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <UserMenu />
         </header>
         {children}
       </div>
