@@ -19,6 +19,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 const LogoBlock: React.FC<{ mobile: boolean }> = ({ mobile }) => {
   return (
@@ -92,6 +93,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
             </SheetContent>
           </Sheet>
           <div className="flex-1" />
+          <ThemeToggle />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" size="icon" className="rounded-full">
