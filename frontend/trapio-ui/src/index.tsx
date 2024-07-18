@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import './globals.css';
-import { HomePage } from './pages/home-page';
-import { SettingsPage } from './pages/settings-page';
+
 import { ThemeContextProvider } from './context/theme-context';
+import { DashboardRoutes } from './routes/dashboard-routes';
+import { SettingsRoutes } from './routes/settings-routes';
 
 const rootEl = document.getElementById('root');
 if (rootEl) {
@@ -16,8 +17,9 @@ if (rootEl) {
       <ThemeContextProvider>
         <BrowserRouter basename="/">
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/dashboard/*" element={<DashboardRoutes />} />
+            <Route path="/settings/*" element={<SettingsRoutes />} />
+            <Route path="*" element={<Navigate to="/dashboard" />} />
           </Routes>
         </BrowserRouter>
       </ThemeContextProvider>

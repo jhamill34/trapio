@@ -1,16 +1,13 @@
-import { Link } from 'react-router-dom';
+import { NavLink, Link, NavLinkProps } from 'react-router-dom';
 import {
+  Blocks,
   CircleUser,
   Home,
-  LineChart,
   Menu,
-  Package,
   Package2,
-  ShoppingCart,
-  Users,
+  Workflow,
 } from 'lucide-react';
 
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -21,59 +18,59 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { cn } from '@/lib/utils';
 
-export const DashboardLayout: React.FC = () => {
+const LogoBlock: React.FC<{ mobile: boolean }> = ({ mobile }) => {
+  return (
+    <Link
+      to="/"
+      className={cn(
+        'flex items-center gap-2 text-lg font-semibold',
+        mobile && 'md:hidden',
+      )}
+    >
+      <Package2 className="h-6 w-6" />
+      <span className={cn('sr-only md:not-sr-only')}>Trapio</span>
+    </Link>
+  );
+};
+
+const NavigationSidebar: React.FC = () => {
+  return (
+    <nav className="grid gap-2 md:gap-0 md:items-start text-lg md:text-sm md:px-2 lg:px-4 font-medium">
+      <LogoBlock mobile />
+      <NavigationLink to="/dashboard">
+        <Home className="h-5 w-5 md:h-4 md:w-4" />
+        Dashboard
+      </NavigationLink>
+      <NavigationLink to="/dashboard/integrations">
+        <Blocks className="h-5 w-5 md:h-4 md:w-4" />
+        Integrations
+      </NavigationLink>
+      <NavigationLink to="/dashboard/workflows">
+        <Workflow className="h-5 w-5 md:h-4 md:w-4" />
+        Workflows
+      </NavigationLink>
+    </nav>
+  );
+};
+
+export type DashboardLayoutProps = {
+  children: React.ReactNode;
+};
+
+export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
+  children,
+}) => {
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <div className="hidden border-r bg-muted/40 md:block">
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-            <Link to="/" className="flex items-center gap-2 font-semibold">
-              <Package2 className="h-6 w-6" />
-              <span className="">Trapio</span>
-            </Link>
+            <LogoBlock mobile={false} />
           </div>
           <div className="flex-1">
-            <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-              <Link
-                to="#"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-              >
-                <Home className="h-4 w-4" />
-                Dashboard
-              </Link>
-              <Link
-                to="#"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-              >
-                <ShoppingCart className="h-4 w-4" />
-                Orders
-                <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                  6
-                </Badge>
-              </Link>
-              <Link
-                to="#"
-                className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
-              >
-                <Package className="h-4 w-4" />
-                Products{' '}
-              </Link>
-              <Link
-                to="#"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-              >
-                <Users className="h-4 w-4" />
-                Customers
-              </Link>
-              <Link
-                to="#"
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-              >
-                <LineChart className="h-4 w-4" />
-                Analytics
-              </Link>
-            </nav>
+            <NavigationSidebar />
           </div>
         </div>
       </div>
@@ -91,53 +88,7 @@ export const DashboardLayout: React.FC = () => {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="flex flex-col">
-              <nav className="grid gap-2 text-lg font-medium">
-                <Link
-                  to="#"
-                  className="flex items-center gap-2 text-lg font-semibold"
-                >
-                  <Package2 className="h-6 w-6" />
-                  <span className="sr-only">Trapio</span>
-                </Link>
-                <Link
-                  to="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-                >
-                  <Home className="h-5 w-5" />
-                  Dashboard
-                </Link>
-                <Link
-                  to="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
-                >
-                  <ShoppingCart className="h-5 w-5" />
-                  Orders
-                  <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                    6
-                  </Badge>
-                </Link>
-                <Link
-                  to="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-                >
-                  <Package className="h-5 w-5" />
-                  Products
-                </Link>
-                <Link
-                  to="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-                >
-                  <Users className="h-5 w-5" />
-                  Customers
-                </Link>
-                <Link
-                  to="#"
-                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-                >
-                  <LineChart className="h-5 w-5" />
-                  Analytics
-                </Link>
-              </nav>
+              <NavigationSidebar />
             </SheetContent>
           </Sheet>
           <div className="flex-1" />
@@ -151,15 +102,40 @@ export const DashboardLayout: React.FC = () => {
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem>Support</DropdownMenuItem>
+
+              <DropdownMenuItem>
+                <Link to="/settings">Settings</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link to="/support">Support</Link>
+              </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
+
+              <DropdownMenuItem>
+                <Link to="/logout">Logout</Link>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </header>
-        <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6"></main>
+        {children}
       </div>
     </div>
+  );
+};
+
+const NavigationLink: React.FC<NavLinkProps> = (props) => {
+  return (
+    <NavLink
+      {...props}
+      aria-current="page"
+      end
+      caseSensitive
+      className={({ isActive }) =>
+        cn(
+          'mx-[-0.65rem] md:mx-0 flex items-center gap-4 md:gap-3 rounded-xl md:rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-foreground md:hover:text-primary',
+          isActive && 'bg-muted text-foreground md:text-primary',
+        )
+      }
+    />
   );
 };
