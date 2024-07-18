@@ -10,7 +10,8 @@ export const LogoBlock: React.FC<{ mobileOnly: boolean }> = ({
       to="/"
       className={cn(
         'flex items-center gap-2 text-lg font-semibold',
-        mobileOnly && 'md:hidden',
+        mobileOnly &&
+          'md:hidden border-b pb-2 mb-2 md:mb-0 md:pb-0 md:border-b-0',
       )}
     >
       <Package2 className="h-6 w-6" />

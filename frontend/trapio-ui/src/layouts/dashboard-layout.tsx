@@ -6,7 +6,6 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { LogoBlock } from '@/components/ui/logo';
-import { Separator } from '@/components/ui/separator';
 import { UserMenu } from '@/components/ui/user-menu';
 
 const NavigationSidebar: React.FC = () => {
