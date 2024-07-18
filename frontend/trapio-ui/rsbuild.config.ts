@@ -3,4 +3,17 @@ import { pluginReact } from '@rsbuild/plugin-react';
 
 export default defineConfig({
   plugins: [pluginReact()],
+  source: {
+    entry: {
+      app: './src/entries/app.tsx',
+    },
+  },
+  server: {
+    historyApiFallback: {
+      rewrites: [{ from: /^\/app/, to: '/app.html' }],
+    },
+  },
+  output: {
+    manifest: true,
+  },
 });
