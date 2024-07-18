@@ -1,17 +1,5 @@
-import { Button } from '@/components/ui/button';
-import { ThemeContext } from '@/context/theme-context';
-import { useContext } from 'react';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 export const HomePage: React.FC = () => {
-  const { mode, setMode } = useContext(ThemeContext);
-
-  return (
-    <Button
-      onClick={() => {
-        setMode(mode === 'dark' ? 'light' : 'dark');
-      }}
-    >
-      {mode}
-    </Button>
-  );
+  return <ThemeToggle />;
 };
