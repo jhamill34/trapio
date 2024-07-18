@@ -1,5 +1,5 @@
-import { ThemeToggle } from '@/components/ui/theme-toggle';
+import { DashboardLayout } from '@/layouts/dashboard-layout';
 
 export const HomePage: React.FC = () => {
-  return <ThemeToggle />;
+  return <DashboardLayout />;
 };
