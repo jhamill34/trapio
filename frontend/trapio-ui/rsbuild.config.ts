@@ -5,8 +5,8 @@ export default defineConfig({
   plugins: [pluginReact()],
   source: {
     entry: {
-      app: './src/entries/app.tsx',
-      auth: './src/entries/auth.tsx',
+      app: './src/entries/app/entry.tsx',
+      auth: './src/entries/auth/entry.tsx',
     },
   },
   server: {

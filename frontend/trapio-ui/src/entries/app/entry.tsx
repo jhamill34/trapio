@@ -6,8 +6,32 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import '@/globals.css';
 
 import { ThemeContextProvider } from '@/context/theme-context';
-import { DashboardRoutes } from '@/routes/dashboard-routes';
-import { SettingsRoutes } from '@/routes/settings-routes';
+
+import { DashboardLayout } from '@/layouts/dashboard-layout';
+import { SettingsLayout } from '@/layouts/settings-layout';
+
+import { SettingsIndexPage } from './settings';
+import { DashboardIndexPage } from './dashboard';
+
+const DashboardRoutes: React.FC = () => {
+  return (
+    <DashboardLayout>
+      <Routes>
+        <Route path="/" element={<DashboardIndexPage />} />
+      </Routes>
+    </DashboardLayout>
+  );
+};
+
+const SettingsRoutes: React.FC = () => {
+  return (
+    <SettingsLayout>
+      <Routes>
+        <Route path="/" element={<SettingsIndexPage />} />
+      </Routes>
+    </SettingsLayout>
+  );
+};
 
 const rootEl = document.getElementById('root');
 if (rootEl) {

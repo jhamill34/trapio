@@ -6,8 +6,9 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import '@/globals.css';
 
 import { ThemeContextProvider } from '@/context/theme-context';
-import { LoginPage } from '@/pages/login-page';
-import { SignupPage } from '@/pages/signup-page';
+
+import { LoginPage } from './login';
+import { SignupPage } from './signup';
 
 const rootEl = document.getElementById('root');
 if (rootEl) {

@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 
-export const SettingsMainPage: React.FC = () => {
+export const SettingsIndexPage: React.FC = () => {
   return (
     <div className="grid gap-6">
       <Card className="bg-background">
