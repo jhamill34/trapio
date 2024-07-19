@@ -21,7 +21,7 @@ const SettingsNavigation: React.FC = () => {
 export const SettingsLayout: React.FC<SettingsLayoutProps> = ({ children }) => {
   return (
     <div className="flex min-h-screen w-full flex-col">
-      <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
+      <header className="flex h-14 items-center gap-4 border-b bg-background px-4 lg:h-[60px] lg:px-6">
         <LogoBlock mobileOnly={false} />
         <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
           <div className="flex-1" />
