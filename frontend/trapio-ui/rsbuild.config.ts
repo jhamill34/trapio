@@ -6,11 +6,15 @@ export default defineConfig({
   source: {
     entry: {
       app: './src/entries/app.tsx',
+      auth: './src/entries/auth.tsx',
     },
   },
   server: {
     historyApiFallback: {
-      rewrites: [{ from: /^\/app/, to: '/app.html' }],
+      rewrites: [
+        { from: /^\/app/, to: '/app.html' },
+        { from: /^\/auth/, to: '/auth.html' },
+      ],
     },
   },
   output: {
