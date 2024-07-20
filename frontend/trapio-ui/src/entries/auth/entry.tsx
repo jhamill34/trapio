@@ -6,9 +6,8 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import '@/globals.css';
 
 import { ThemeContextProvider } from '@/context/theme-context';
-
-import { LoginPage } from './login';
-import { SignupPage } from './signup';
+import { SingleFormLayout } from '@/layouts/single-form-layout';
+import { LoginPage, SignupPage } from './forms';
 
 const rootEl = document.getElementById('root');
 if (rootEl) {
@@ -17,11 +16,13 @@ if (rootEl) {
     <React.StrictMode>
       <ThemeContextProvider>
         <BrowserRouter basename="/auth">
-          <Routes>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignupPage />} />
-            <Route path="*" element={<Navigate to="/login" />} />
-          </Routes>
+          <SingleFormLayout>
+            <Routes>
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/signup" element={<SignupPage />} />
+              <Route path="*" element={<Navigate to="/login" />} />
+            </Routes>
+          </SingleFormLayout>
         </BrowserRouter>
       </ThemeContextProvider>
     </React.StrictMode>,

@@ -2,6 +2,7 @@ import { NavLink, NavLinkProps } from 'react-router-dom';
 import { LogoBlock } from '@/components/ui/logo';
 import { UserMenu } from '@/components/ui/user-menu';
 import { cn } from '@/lib/utils';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 export type SettingsLayoutProps = {
   children: React.ReactNode;
@@ -25,6 +26,7 @@ export const SettingsLayout: React.FC<SettingsLayoutProps> = ({ children }) => {
         <LogoBlock mobileOnly={false} />
         <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
           <div className="flex-1" />
+          <ThemeToggle />
           <UserMenu />
         </div>
       </header>
