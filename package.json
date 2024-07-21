@@ -1,0 +1,7 @@
+{
+    "name": "trapio",
+    "private": true,
+    "workspaces": [
+        "frontend/trapio-ui"
+    ]
+}
