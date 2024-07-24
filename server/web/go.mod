@@ -8,4 +8,4 @@ require github.com/google/wire v0.6.0
 //  Remove this if:
 //  - https://github.com/google/wire/pull/410 gets merged OR
 //  - https://github.com/google/wire/issues/403 gets resolved
-replace github.com/google/wire => github.com/jhamill34/wire v0.1.0
+replace github.com/google/wire => github.com/jhamill34/wire v0.1.1
